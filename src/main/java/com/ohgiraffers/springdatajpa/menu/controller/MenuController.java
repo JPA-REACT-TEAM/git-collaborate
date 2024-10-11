@@ -40,21 +40,6 @@ public class MenuController {
 //
 //		return "menu/list";
 //	}
-	
-	/**
-	 * 주어진 Pageable 정보를 바탕으로 메뉴 리스트를 조회하고, Model에 페이지네이션 정보를 추가한 후 반환한다.
-	 *
-	 * <p>{@link org.springframework.data.domain.Pageable} 객체를 인자로 받아 페이지 요청 정보를
-	 * 처리한다. @PageableDefault 어노테이션을 통해 기본 페이지 설정을 지정할 수 있다.</p>
-	 * <p>예를 들어, 기본 페이지 크기나 정렬 기준을 설정할 수 있으며, 필요한 경우 클라이언트 요청에 따라 동적으로
-	 * 변경될 수도 있다.</p>
-	 *
-	 * @param pageable {@link org.springframework.data.domain.Pageable} 객체로, 페이지 번호, 크기, 정렬 정보를 관리한다.
-	 *                  {@code @PageableDefault(size = 10, sort = "name")} 와 같이 기본 페이지 크기를 10, 정렬 기준을 이름으로 설정할 수 있다.
-	 * @param model {@link org.springframework.ui.Model} 객체로, 뷰에 페이지 정보와 메뉴 리스트를 추가하는 데 사용된다.
-	 * @return 조회된 {@link java.util.List} 객체로, DB로부터 검색된 메뉴 리스트를 반환한다.
-	 */
-
 	// menuCode
 	// 진기
 
@@ -89,8 +74,21 @@ public class MenuController {
 
 	// queryMethod
 	// 예진
+	@GetMapping("/querymethod")
+	public void queryMethod(){}
 
 	// menuSearch
+	@GetMapping("/search")
+	public String findByMenuPrice (@RequestParam Integer menuPrice, Model model) {
+
+		List<MenuDTO> menuList = menuService.findByMenuPrice(menuPrice);
+
+		model.addAttribute("menuList", menuList);
+		model.addAttribute("menuPrice", menuPrice);
+
+		return "menu/searchResult";
+	}
+
 
 	// menuRegist
 	// 성균

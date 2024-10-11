@@ -65,7 +65,6 @@ public class MenuService {
 		return menuList.map(menu -> modelMapper.map(menu, MenuDTO.class));
 	}
 
-	
 	public List<MenuDTO> findByMenuPrice(Integer menuPrice) {
 
 		List<Menu> menuList = menuRepository.findByMenuPriceGreaterThan(menuPrice);
@@ -109,6 +108,7 @@ public class MenuService {
 	public void deleteMenu(Integer menuCode) {
 		menuRepository.deleteById(menuCode);
 	}
-	
-	
+
+
+
 }
