@@ -57,6 +57,16 @@ public class MenuController {
 
 	// menuCode
 	// 진기
+    @GetMapping("/{menuCode}")
+    public String findMenuByCode(@PathVariable int menuCode, Model model) {
+
+        MenuDTO menu = menuService.findMenuByCode(menuCode);
+
+        model.addAttribute("menu", menu);
+
+        return "menu/detail";
+    }
+
 
 	// menuList
 	// 성균
