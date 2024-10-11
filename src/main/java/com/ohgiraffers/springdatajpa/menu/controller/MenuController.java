@@ -18,11 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import lombok.extern.slf4j.Slf4j;
 
-/* 설명. @Slf4j(Simple Logging Facade for Java):
- *  Lombok 라이브러리의 어노테이션으로 클래스에 자동으로 SLF4J Logger 인스턴스를 추가해준다.
- *  따라서 개발자는 코드에 별도의 Logger 객체 선언 없이 'log' 변수를 사용해 바로 로깅 가능하다.
- *  로깅 프레임워크에 종속되지 않는 방식으로 로깅 인터페이스를 사용할 수 있게 해준다.
- * */
 @Slf4j
 @Controller
 @RequestMapping("/menu")
@@ -30,23 +25,12 @@ public class MenuController {
 
 	private final MenuService menuService;
 
-	/* 설명. MenuService 생성자 주입 */
 	// @Autowired를 작성하지 않아도 자동 적용됨을 잊지 말자.
 	public MenuController(MenuService menuService) {
 		this.menuService = menuService;
 	}
-	
-	@GetMapping("/{menuCode}")
-	public String findMenuByCode(@PathVariable int menuCode, Model model) {
 
-		MenuDTO menu = menuService.findMenuByCode(menuCode);
 
-		model.addAttribute("menu", menu);
-
-		return "menu/detail";
-	}
-	
-	/* 설명. JPA 페이징 처리 미적용 */
 //	@GetMapping("/list")
 //	public String findMenuList(Model model) {
 //
@@ -57,7 +41,6 @@ public class MenuController {
 //		return "menu/list";
 //	}
 	
-	/* 설명. JPA 페이징 처리 적용 */
 	/**
 	 * 주어진 Pageable 정보를 바탕으로 메뉴 리스트를 조회하고, Model에 페이지네이션 정보를 추가한 후 반환한다.
 	 *
@@ -71,6 +54,12 @@ public class MenuController {
 	 * @param model {@link org.springframework.ui.Model} 객체로, 뷰에 페이지 정보와 메뉴 리스트를 추가하는 데 사용된다.
 	 * @return 조회된 {@link java.util.List} 객체로, DB로부터 검색된 메뉴 리스트를 반환한다.
 	 */
+
+	// menuCode
+	// 진기
+
+	// menuList
+	// 성균
 	@GetMapping("/list")
 	public String findMenuList(@PageableDefault Pageable pageable, Model model) {
 
@@ -96,57 +85,20 @@ public class MenuController {
 
 		return "menu/list";
 	}
-	
-	@GetMapping("/querymethod")
-	public void queryMethodPage() {}
-	
-	@GetMapping("/search")
-	public String findByMenuPrice(@RequestParam Integer menuPrice, Model model) {
-		
-		List<MenuDTO> menuList = menuService.findByMenuPrice(menuPrice);
-		
-		model.addAttribute("menuList", menuList);
-		model.addAttribute("menuPrice", menuPrice);
-		
-		return "menu/searchResult";
-		
-	}
 
-	/* 설명. 해당 핸들러에 의해 /menu/regist.html 뷰가 반환되고,
-	 *  이 뷰가 클라이언트 측의 브라우저에서 렌더링될 때 fetch 비동기 요청이 전송된다는 것을 잊지 말자.
-	 *  그 fetch 요청은 MenuController가 아닌 CategoryController 핸들러가 처리하도록 설계되었다.
-	 * */
-	@GetMapping("/regist")
-	public void registPage() {}
 
-	@PostMapping("/regist")
-	public String registNewMenu(MenuDTO newMenu) {
-		
-		menuService.registNewMenu(newMenu);
-		
-		return "redirect:/menu/list";
-	}
-	
-	@GetMapping("/modify")
-	public void modifyPage() {}
-	
-	@PostMapping("/modify")
-	public String modifyMenu(MenuDTO modifyMenu) {
-		
-		menuService.modifyMenu(modifyMenu);
-		
-		return "redirect:/menu/" + modifyMenu.getMenuCode();
-	}
-	
-	@GetMapping("/delete")
-	public void deletePage() {}
-	
-	@PostMapping("/delete")
-	public String deleteMenu(@RequestParam Integer menuCode) {
+	// queryMethod
+	// 예진
 
-		menuService.deleteMenu(menuCode);
-		
-		return "redirect:/menu/list";
-	}
+	// menuSearch
+
+	// menuRegist
+	// 성균
+
+	// menuModify
+	// 진기
+
+	// menuDelete
+	// 예진
 
 }
