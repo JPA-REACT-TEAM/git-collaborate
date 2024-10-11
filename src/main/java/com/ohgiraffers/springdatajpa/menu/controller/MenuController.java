@@ -95,6 +95,16 @@ public class MenuController {
 	// menuRegist
 	// 성균
 
+	@GetMapping("/regist")
+	public void registPage() {}
+
+	@PostMapping("/regist")
+	public String registNewMenu(MenuDTO newMenu) {
+		menuService.registNewMenu(newMenu);
+
+		return "redirect:/menu/list";
+	}
+
 	// menuModify
 	// 진기
 
