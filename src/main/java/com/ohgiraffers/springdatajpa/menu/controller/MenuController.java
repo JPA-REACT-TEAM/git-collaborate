@@ -31,6 +31,7 @@ public class MenuController {
 	}
 
 
+
     // menuRegist
     // 성균
 
@@ -77,12 +78,11 @@ public class MenuController {
 
 
 
-
-
-
-
-
     // 충돌아 나거라
+
+
+	@GetMapping("/querymethod")
+	public void queryMethod(){}
 
     /// 충돌
 
@@ -100,6 +100,17 @@ public class MenuController {
         return "menu/detail";
     }
 	// menuSearch
+	@GetMapping("/search")
+	public String findByMenuPrice (@RequestParam Integer menuPrice, Model model) {
+
+		List<MenuDTO> menuList = menuService.findByMenuPrice(menuPrice);
+
+		model.addAttribute("menuList", menuList);
+		model.addAttribute("menuPrice", menuPrice);
+
+		return "menu/searchResult";
+	}
+
 
 //	@GetMapping("/list")
 //	public String findMenuList(Model model) {
