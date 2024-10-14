@@ -122,46 +122,61 @@ public class MenuController {
 //		return "menu/list";
 //	}
 
-    // menuList
-    // 성균
-    @GetMapping("/list")
-    public String findMenuList(@PageableDefault Pageable pageable, Model model) {
+	// menuList
+	// 성균
+	@GetMapping("/list")
+	public String findMenuList(@PageableDefault Pageable pageable, Model model) {
 
-        /* page -> number, size, sort 파라미터가 Pageable 객체에 담긴다. */
-        log.info("pageable : {}", pageable);
+		/* page -> number, size, sort 파라미터가 Pageable 객체에 담긴다. */
+		log.info("pageable : {}", pageable);
 
-        Page<MenuDTO> menuList = menuService.findMenuList(pageable);
+		Page<MenuDTO> menuList = menuService.findMenuList(pageable);
 
-        log.info("조회한 내용 목록 : {}", menuList.getContent());
-        log.info("총 페이지 수 : {}", menuList.getTotalPages());
-        log.info("총 메뉴 수 : {}", menuList.getTotalElements());
-        log.info("해당 페이지에 표시 될 요소 수 : {}", menuList.getSize());
-        log.info("해당 페이지에 실제 요소 수 : {}", menuList.getNumberOfElements());
-        log.info("첫 페이지 여부 : {}", menuList.isFirst());
-        log.info("마지막 페이지 여부 : {}", menuList.isLast());
-        log.info("정렬 방식 : {}", menuList.getSort());
-        log.info("여러 페이지 중 현재 인덱스 : {}", menuList.getNumber());
+		log.info("조회한 내용 목록 : {}", menuList.getContent());
+		log.info("총 페이지 수 : {}", menuList.getTotalPages());
+		log.info("총 메뉴 수 : {}", menuList.getTotalElements());
+		log.info("해당 페이지에 표시 될 요소 수 : {}", menuList.getSize());
+		log.info("해당 페이지에 실제 요소 수 : {}", menuList.getNumberOfElements());
+		log.info("첫 페이지 여부 : {}", menuList.isFirst());
+		log.info("마지막 페이지 여부 : {}", menuList.isLast());
+		log.info("정렬 방식 : {}", menuList.getSort());
+		log.info("여러 페이지 중 현재 인덱스 : {}", menuList.getNumber());
 
-        PagingButtonInfo paging = Pagenation.getPagingButtonInfo(menuList);
+		PagingButtonInfo paging = Pagenation.getPagingButtonInfo(menuList);
 
-        model.addAttribute("paging", paging);
-        model.addAttribute("menuList", menuList);
-        
-        return "menu/list";
-    }
-  
+		model.addAttribute("paging", paging);
+		model.addAttribute("menuList", menuList);
+
+		return "menu/list";
+	}
+
+
+	// queryMethod
+	// 예진
+
+	// menuSearch
+
+	// menuRegist
+	// 성균
+
 	// menuModify
 	// 진기
     @GetMapping("/modify")
     public void modifyPage() {}
 
     @PostMapping("/modify")
-    public String modifyMenu(MenuDTO modifyMenu) {
+    public String modifyMenu(MenuDTO modifyMenu) {}
 
-        menuService.modifyMenu(modifyMenu);
+	// menuDelete
+	// 예진
+	@GetMapping("/delete")
+	public void deletePage () {
+	}
 
-        return "redirect:/menu/" + modifyMenu.getMenuCode();
-    }
-
+	@PostMapping("/delete")
+	public String deleteMenu (@RequestParam Integer menuCode){
+		menuService.deleteMenu(menuCode);
+		return "redirect:/menu/list";
+	}
 
 }
