@@ -31,15 +31,25 @@ public class MenuController {
 	}
 
 
-//	@GetMapping("/list")
-//	public String findMenuList(Model model) {
-//
-//		List<MenuDTO> menuList = menuService.findMenuList();
-//
-//		model.addAttribute("menuList", menuList);
-//
-//		return "menu/list";
-//	}
+
+    // menuRegist
+    // 성균
+
+    @GetMapping("/regist")
+    public void registPage() {}
+
+    @PostMapping("/regist")
+    public String registNewMenu(MenuDTO newMenu) {
+        menuService.registNewMenu(newMenu);
+
+        return "redirect:/menu/list";
+    }
+
+    // menuModify
+    // 진기
+
+    // menuDelete
+    // 예진
 	
 	/**
 	 * 주어진 Pageable 정보를 바탕으로 메뉴 리스트를 조회하고, Model에 페이지네이션 정보를 추가한 후 반환한다.
@@ -55,46 +65,91 @@ public class MenuController {
 	 * @return 조회된 {@link java.util.List} 객체로, DB로부터 검색된 메뉴 리스트를 반환한다.
 	 */
 
-	// menuCode
-	// 진기
+    // queryMethod
+    // 예진
 
-	// menuList
-	// 성균
-	@GetMapping("/list")
-	public String findMenuList(@PageableDefault Pageable pageable, Model model) {
+    // 충돌 테스트를 위해서
+    // 일부러 만든 주석
 
-		/* page -> number, size, sort 파라미터가 Pageable 객체에 담긴다. */
-		log.info("pageable : {}", pageable);
+    //
 
-		Page<MenuDTO> menuList = menuService.findMenuList(pageable);
+    ///
 
-		log.info("조회한 내용 목록 : {}", menuList.getContent());
-		log.info("총 페이지 수 : {}", menuList.getTotalPages());
-		log.info("총 메뉴 수 : {}", menuList.getTotalElements());
-		log.info("해당 페이지에 표시 될 요소 수 : {}", menuList.getSize());
-		log.info("해당 페이지에 실제 요소 수 : {}", menuList.getNumberOfElements());
-		log.info("첫 페이지 여부 : {}", menuList.isFirst());
-		log.info("마지막 페이지 여부 : {}", menuList.isLast());
-		log.info("정렬 방식 : {}", menuList.getSort());
-		log.info("여러 페이지 중 현재 인덱스 : {}", menuList.getNumber());
 
-		PagingButtonInfo paging = Pagenation.getPagingButtonInfo(menuList);
 
-		model.addAttribute("paging", paging);
+
+    // 충돌아 나거라
+
+
+	@GetMapping("/querymethod")
+	public void queryMethod(){}
+
+    /// 충돌
+
+    // 충돌
+
+    // menuCode
+    // 진기
+    @GetMapping("/{menuCode}")
+    public String findMenuByCode(@PathVariable int menuCode, Model model) {
+
+        MenuDTO menu = menuService.findMenuByCode(menuCode);
+
+        model.addAttribute("menu", menu);
+
+        return "menu/detail";
+    }
+	// menuSearch
+	@GetMapping("/search")
+	public String findByMenuPrice (@RequestParam Integer menuPrice, Model model) {
+
+		List<MenuDTO> menuList = menuService.findByMenuPrice(menuPrice);
+
 		model.addAttribute("menuList", menuList);
+		model.addAttribute("menuPrice", menuPrice);
 
-		return "menu/list";
+		return "menu/searchResult";
 	}
 
 
-	// queryMethod
-	// 예진
+//	@GetMapping("/list")
+//	public String findMenuList(Model model) {
+//
+//		List<MenuDTO> menuList = menuService.findMenuList();
+//
+//		model.addAttribute("menuList", menuList);
+//
+//		return "menu/list";
+//	}
 
-	// menuSearch
+    // menuList
+    // 성균
+    @GetMapping("/list")
+    public String findMenuList(@PageableDefault Pageable pageable, Model model) {
 
-	// menuRegist
-	// 성균
+        /* page -> number, size, sort 파라미터가 Pageable 객체에 담긴다. */
+        log.info("pageable : {}", pageable);
 
+        Page<MenuDTO> menuList = menuService.findMenuList(pageable);
+
+        log.info("조회한 내용 목록 : {}", menuList.getContent());
+        log.info("총 페이지 수 : {}", menuList.getTotalPages());
+        log.info("총 메뉴 수 : {}", menuList.getTotalElements());
+        log.info("해당 페이지에 표시 될 요소 수 : {}", menuList.getSize());
+        log.info("해당 페이지에 실제 요소 수 : {}", menuList.getNumberOfElements());
+        log.info("첫 페이지 여부 : {}", menuList.isFirst());
+        log.info("마지막 페이지 여부 : {}", menuList.isLast());
+        log.info("정렬 방식 : {}", menuList.getSort());
+        log.info("여러 페이지 중 현재 인덱스 : {}", menuList.getNumber());
+
+        PagingButtonInfo paging = Pagenation.getPagingButtonInfo(menuList);
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("menuList", menuList);
+        
+        return "menu/list";
+    }
+  
 	// menuModify
 	// 진기
     @GetMapping("/modify")
@@ -108,7 +163,5 @@ public class MenuController {
         return "redirect:/menu/" + modifyMenu.getMenuCode();
     }
 
-	// menuDelete
-	// 예진
 
 }
