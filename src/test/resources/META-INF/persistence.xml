@@ -5,6 +5,7 @@
 
 
 
+
         
 
     <persistence-unit name="jpatest">
@@ -14,6 +15,7 @@
         <class>com.ohgiraffers.selectMenuByCode.Menu</class>
         <class>com.ohgiraffers.selectMenuByPrice.Menu</class>
         <class>com.ohgiraffers.deleteMenu.Menu</class>
+        <class>com.ohgiraffers.updateMenu.Menu</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

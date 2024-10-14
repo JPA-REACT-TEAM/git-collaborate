@@ -146,8 +146,21 @@ public class MenuController {
 
         model.addAttribute("paging", paging);
         model.addAttribute("menuList", menuList);
-
+        
         return "menu/list";
+    }
+  
+	// menuModify
+	// 진기
+    @GetMapping("/modify")
+    public void modifyPage() {}
+
+    @PostMapping("/modify")
+    public String modifyMenu(MenuDTO modifyMenu) {
+
+        menuService.modifyMenu(modifyMenu);
+
+        return "redirect:/menu/" + modifyMenu.getMenuCode();
     }
 
 
