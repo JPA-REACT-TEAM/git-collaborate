@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity(name = "menu")
+@Entity(name = "menu_selectMenuByWhere")
 @Table(name = "tbl_menu")
 public class Menu {
 

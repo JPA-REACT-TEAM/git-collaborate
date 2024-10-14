@@ -40,7 +40,7 @@ public class RegistNewMenuTests {
         RegistMenu menu = new RegistMenu();
         menu.setCategoryCode(1); // 식사
         menu.setMenuCode(37);
-        menu.setMenuName("참치꽁치조림1");
+        menu.setMenuName("참치꽁치조림");
         menu.setMenuPrice(40000);
         menu.setOrderable_status("Y");
 

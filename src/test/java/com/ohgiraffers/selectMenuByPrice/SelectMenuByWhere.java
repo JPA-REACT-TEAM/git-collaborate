@@ -41,7 +41,7 @@ public class SelectMenuByWhere {
         int menuPrice = 5000;
 
         //when
-        String jpql = "SELECT m FROM menu as m WHERE m.menuPrice = :menuPrice";
+        String jpql = "SELECT m FROM menu_selectMenuByWhere as m WHERE m.menuPrice = :menuPrice";
         Query query = entityManager.createQuery(jpql);
         query.setParameter("menuPrice", menuPrice);
 

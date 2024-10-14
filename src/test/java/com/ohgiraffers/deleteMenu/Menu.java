@@ -1,11 +1,11 @@
-package com.ohgiraffers.deleteMenu;
+package com.ohgiraffers.DeleteMenu;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity(name = "menu")
+@Entity(name = "menu_delete")
 @Table(name = "tbl_menu")
 public class Menu {
 

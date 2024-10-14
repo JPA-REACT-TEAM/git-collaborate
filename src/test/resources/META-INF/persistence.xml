@@ -10,8 +10,8 @@
         <class>com.ohgiraffers.registNewMenu.RegistMenu</class>
         <class>com.ohgiraffers.selectMenuByCode.Menu</class>
         <class>com.ohgiraffers.selectMenuByPrice.Menu</class>
-      <class>com.ohgiraffers.DeleteMenu.Menu</class>
-      // <class>com.ohgiraffers.deleteMenu.Menu</class>
+        <class>com.ohgiraffers.DeleteMenu.Menu</class>
+<!--       <class>com.ohgiraffers.deleteMenu.Menu</class>-->
         <class>com.ohgiraffers.updateMenu.Menu</class>
       
 
