@@ -2,11 +2,7 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
-
-
-
-
-        
+  
 
     <persistence-unit name="jpatest">
 
@@ -14,14 +10,17 @@
         <class>com.ohgiraffers.registNewMenu.RegistMenu</class>
         <class>com.ohgiraffers.selectMenuByCode.Menu</class>
         <class>com.ohgiraffers.selectMenuByPrice.Menu</class>
-        <class>com.ohgiraffers.deleteMenu.Menu</class>
+      <class>com.ohgiraffers.DeleteMenu.Menu</class>
+      // <class>com.ohgiraffers.deleteMenu.Menu</class>
         <class>com.ohgiraffers.updateMenu.Menu</class>
+      
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.user" value="ohgiraffers"/>
             <property name="jakarta.persistence.jdbc.password" value="ohgiraffers"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/menudb"/>
+
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.highlight_sql" value="true"/>
