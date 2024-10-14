@@ -1,13 +1,13 @@
-package com.ohgiraffers.selectMenuAll;
+package com.ohgiraffers.registNewMenu;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity(name = "menu_selectMenuAll")
+@Entity(name = "menu_registNewMenu")
 @Table(name = "tbl_menu")
-public class Menu {
+public class RegistMenu {
 
     @Id
     @Column(name = "menu_code")
@@ -25,11 +25,11 @@ public class Menu {
     @Column(name = "orderable_status")
     String orderable_status;
 
-    public Menu() {
+    public RegistMenu() {
 
     }
 
-    public Menu(int menuCode, String menuName, int menuPrice, int categoryCode, String orderable_status) {
+    public RegistMenu(int menuCode, String menuName, int menuPrice, int categoryCode, String orderable_status) {
         this.menuCode = menuCode;
         this.menuName = menuName;
         this.menuPrice = menuPrice;
