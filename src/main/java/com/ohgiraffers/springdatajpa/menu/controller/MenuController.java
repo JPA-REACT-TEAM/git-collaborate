@@ -31,15 +31,25 @@ public class MenuController {
 	}
 
 
-//	@GetMapping("/list")
-//	public String findMenuList(Model model) {
-//
-//		List<MenuDTO> menuList = menuService.findMenuList();
-//
-//		model.addAttribute("menuList", menuList);
-//
-//		return "menu/list";
-//	}
+
+    // menuRegist
+    // 성균
+
+    @GetMapping("/regist")
+    public void registPage() {}
+
+    @PostMapping("/regist")
+    public String registNewMenu(MenuDTO newMenu) {
+        menuService.registNewMenu(newMenu);
+
+        return "redirect:/menu/list";
+    }
+
+    // menuModify
+    // 진기
+
+    // menuDelete
+    // 예진
 	
 	/**
 	 * 주어진 Pageable 정보를 바탕으로 메뉴 리스트를 조회하고, Model에 페이지네이션 정보를 추가한 후 반환한다.
@@ -55,8 +65,62 @@ public class MenuController {
 	 * @return 조회된 {@link java.util.List} 객체로, DB로부터 검색된 메뉴 리스트를 반환한다.
 	 */
 
-	// menuCode
-	// 진기
+    // queryMethod
+    // 예진
+
+    // 충돌 테스트를 위해서
+    // 일부러 만든 주석
+
+    //
+
+    ///
+
+
+
+
+    // 충돌아 나거라
+
+
+	@GetMapping("/querymethod")
+	public void queryMethod(){}
+
+    /// 충돌
+
+    // 충돌
+
+    // menuCode
+    // 진기
+    @GetMapping("/{menuCode}")
+    public String findMenuByCode(@PathVariable int menuCode, Model model) {
+
+        MenuDTO menu = menuService.findMenuByCode(menuCode);
+
+        model.addAttribute("menu", menu);
+
+        return "menu/detail";
+    }
+	// menuSearch
+	@GetMapping("/search")
+	public String findByMenuPrice (@RequestParam Integer menuPrice, Model model) {
+
+		List<MenuDTO> menuList = menuService.findByMenuPrice(menuPrice);
+
+		model.addAttribute("menuList", menuList);
+		model.addAttribute("menuPrice", menuPrice);
+
+		return "menu/searchResult";
+	}
+
+
+//	@GetMapping("/list")
+//	public String findMenuList(Model model) {
+//
+//		List<MenuDTO> menuList = menuService.findMenuList();
+//
+//		model.addAttribute("menuList", menuList);
+//
+//		return "menu/list";
+//	}
 
 	// menuList
 	// 성균
@@ -97,14 +161,20 @@ public class MenuController {
 
 	// menuModify
 	// 진기
+    @GetMapping("/modify")
+    public void modifyPage() {}
+
+    @PostMapping("/modify")
+    public String modifyMenu(MenuDTO modifyMenu) {}
 
 	// menuDelete
 	// 예진
 	@GetMapping("/delete")
-	public void deletePage() {}
+	public void deletePage () {
+	}
 
 	@PostMapping("/delete")
-	public String deleteMenu(@RequestParam Integer menuCode) {
+	public String deleteMenu (@RequestParam Integer menuCode){
 		menuService.deleteMenu(menuCode);
 		return "redirect:/menu/list";
 	}
