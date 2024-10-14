@@ -12,6 +12,8 @@
         <class>com.ohgiraffers.selectMenuAll.SelectMenu</class>
         <class>com.ohgiraffers.registNewMenu.RegistMenu</class>
         <class>com.ohgiraffers.selectMenuByCode.Menu</class>
+        <class>com.ohgiraffers.selectMenuByPrice.Menu</class>
+        <class>com.ohgiraffers.deleteMenu.Menu</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
